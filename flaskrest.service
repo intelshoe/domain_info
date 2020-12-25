@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve flask application
+After=network.target
+
+[Service]
+User=rainfo18
+Group=rainfo18
+WorkingDirectory=/home/rainfo18/stackevolve.org/domain_info/
+Environment="PATH=/home/rainfo18/stackevolve.org/domain_info/venv/bin"
+ExecStart=/home/rainfo18/stackevolve.org/domain_info/venv/bin/gunicorn --config gunicorn_config.py wsgi:app
+
+[Install]
+WantedBy=multi-user.target
